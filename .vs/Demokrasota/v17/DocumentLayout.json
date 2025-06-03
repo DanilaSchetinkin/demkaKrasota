@@ -34,7 +34,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Bookmark",
@@ -58,15 +58,40 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "OrderWindow.axaml",
+              "DocumentMoniker": "D:\\Demokrasota\\Demokrasota\\OrderWindow.axaml",
+              "RelativeDocumentMoniker": "Demokrasota\\OrderWindow.axaml",
+              "ToolTip": "D:\\Demokrasota\\Demokrasota\\OrderWindow.axaml",
+              "RelativeToolTip": "Demokrasota\\OrderWindow.axaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-06-03T20:12:52.136Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MainWindow.axaml.cs",
+              "DocumentMoniker": "D:\\Demokrasota\\Demokrasota\\MainWindow.axaml.cs",
+              "RelativeDocumentMoniker": "Demokrasota\\MainWindow.axaml.cs",
+              "ToolTip": "D:\\Demokrasota\\Demokrasota\\MainWindow.axaml.cs",
+              "RelativeToolTip": "Demokrasota\\MainWindow.axaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-02T14:51:54.234Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
               "Title": "OrderWindow.axaml.cs",
               "DocumentMoniker": "D:\\Demokrasota\\Demokrasota\\OrderWindow.axaml.cs",
               "RelativeDocumentMoniker": "Demokrasota\\OrderWindow.axaml.cs",
               "ToolTip": "D:\\Demokrasota\\Demokrasota\\OrderWindow.axaml.cs",
               "RelativeToolTip": "Demokrasota\\OrderWindow.axaml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-02T16:22:54.097Z",
+              "WhenOpened": "2025-06-03T20:12:51.964Z",
               "EditorCaption": ""
             },
             {
@@ -91,30 +116,7 @@
               "ToolTip": "D:\\Demokrasota\\Demokrasota\\MainWindow.axaml",
               "RelativeToolTip": "Demokrasota\\MainWindow.axaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-06-02T14:23:10.043Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "MainWindow.axaml.cs",
-              "DocumentMoniker": "D:\\Demokrasota\\Demokrasota\\MainWindow.axaml.cs",
-              "RelativeDocumentMoniker": "Demokrasota\\MainWindow.axaml.cs",
-              "ToolTip": "D:\\Demokrasota\\Demokrasota\\MainWindow.axaml.cs",
-              "RelativeToolTip": "Demokrasota\\MainWindow.axaml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAAUAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-02T14:51:54.234Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "OrderWindow.axaml",
-              "DocumentMoniker": "D:\\Demokrasota\\Demokrasota\\OrderWindow.axaml",
-              "RelativeDocumentMoniker": "Demokrasota\\OrderWindow.axaml",
-              "ToolTip": "D:\\Demokrasota\\Demokrasota\\OrderWindow.axaml",
-              "RelativeToolTip": "Demokrasota\\OrderWindow.axaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-06-02T16:22:54.167Z",
+              "WhenOpened": "2025-06-02T14:23:10.043Z",
               "EditorCaption": ""
             },
             {

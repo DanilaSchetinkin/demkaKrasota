@@ -28,7 +28,7 @@ namespace Demokrasota
                 {
 
                     var orderWindow = new OrderWindow();
-                    OrderWindow.Show();
+                    orderWindow.Show();
                     this.Close();
                 }
                 else

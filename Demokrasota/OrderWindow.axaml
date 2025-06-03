@@ -1,6 +1,22 @@
 <Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="Demokrasota.OrderWindow"
-        Title="Order Window">
-	<TextBlock Text="Добро пожаловать в систему!" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        Title="OrderWindow">
+	<DockPanel>
+		<StackPanel 
+			DockPanel.Dock="Top"
+			Margin="25"
+			VerticalAlignment="Top"
+			Height="70"
+			Width=""
+			Orientation="Horizontal">
+			<TextBox
+				x:Name="SearchBox"
+				Height="30"
+				Width="200"></TextBox>
+		</StackPanel>
+	</DockPanel>
 </Window>
