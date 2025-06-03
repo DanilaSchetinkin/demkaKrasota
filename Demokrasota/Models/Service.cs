@@ -21,5 +21,5 @@ public partial class Service
 
     public decimal PriceForRussianCosmetics { get; set; }
 
-    public virtual ICollection<EmployeeService> EmployeeServices { get; set; } = new List<EmployeeService>();
+    public virtual ICollection<Employee> Employees { get; set; } = new List<Employee>();
 }

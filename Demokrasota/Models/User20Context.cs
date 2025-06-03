@@ -15,7 +15,7 @@ public partial class User20Context : DbContext
     {
     }
 
-    public virtual DbSet<EmployeeService> EmployeeServices { get; set; }
+    public virtual DbSet<Employee> Employees { get; set; }
 
     public virtual DbSet<IndividualClient> IndividualClients { get; set; }
 
@@ -33,19 +33,52 @@ public partial class User20Context : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<EmployeeService>(entity =>
+        modelBuilder.Entity<Employee>(entity =>
         {
-            entity.HasKey(e => new { e.EmployeeId, e.ServiceId }).HasName("employee_services_pkey");
+            entity.HasKey(e => e.Id).HasName("employees_pkey");
 
-            entity.ToTable("employee_services", "public2");
+            entity.ToTable("employees", "public2");
 
-            entity.Property(e => e.EmployeeId).HasColumnName("employee_id");
-            entity.Property(e => e.ServiceId).HasColumnName("service_id");
+            entity.Property(e => e.Id)
+                .ValueGeneratedNever()
+                .HasColumnName("id");
+            entity.Property(e => e.Email)
+                .HasMaxLength(100)
+                .HasColumnName("email");
+            entity.Property(e => e.FullName)
+                .HasMaxLength(100)
+                .HasColumnName("full_name");
+            entity.Property(e => e.HireDate)
+                .HasColumnType("timestamp without time zone")
+                .HasColumnName("hire_date");
+            entity.Property(e => e.Password)
+                .HasMaxLength(100)
+                .HasColumnName("password");
+            entity.Property(e => e.PositionId).HasColumnName("position_id");
 
-            entity.HasOne(d => d.Service).WithMany(p => p.EmployeeServices)
-                .HasForeignKey(d => d.ServiceId)
+            entity.HasOne(d => d.Position).WithMany(p => p.Employees)
+                .HasForeignKey(d => d.PositionId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("employee_services_service_id_fkey");
+                .HasConstraintName("employees_position_id_fkey");
+
+            entity.HasMany(d => d.Services).WithMany(p => p.Employees)
+                .UsingEntity<Dictionary<string, object>>(
+                    "EmployeeService",
+                    r => r.HasOne<Service>().WithMany()
+                        .HasForeignKey("ServiceId")
+                        .OnDelete(DeleteBehavior.ClientSetNull)
+                        .HasConstraintName("fk_service"),
+                    l => l.HasOne<Employee>().WithMany()
+                        .HasForeignKey("EmployeeId")
+                        .OnDelete(DeleteBehavior.ClientSetNull)
+                        .HasConstraintName("fk_employee"),
+                    j =>
+                    {
+                        j.HasKey("EmployeeId", "ServiceId").HasName("employee_services_pkey");
+                        j.ToTable("employee_services", "public2");
+                        j.IndexerProperty<int>("EmployeeId").HasColumnName("employee_id");
+                        j.IndexerProperty<int>("ServiceId").HasColumnName("service_id");
+                    });
         });
 
         modelBuilder.Entity<IndividualClient>(entity =>

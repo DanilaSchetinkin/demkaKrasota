@@ -4,6 +4,23 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="Demokrasota.MainWindow"
-        Title="Demokrasota">
-    Welcome to Avalonia!
+        Title="Login">
+	<DockPanel>
+		<StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5">
+			<StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5">
+				<TextBlock> ЗАО "Русская косметика"</TextBlock>
+			</StackPanel>
+			<StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5">
+				<TextBlock Text="Логин" Margin="5"></TextBlock>
+				<TextBox x:Name="Log" Width="200" Margin="5"></TextBox>
+				<TextBlock Text="Пароль" Margin="5"></TextBlock>
+				<TextBox x:Name="Pass" Width="200" Margin="5"></TextBox>
+				<Button x:Name="BtnLog" Content="Войти" Margin="5" Click="Button_Click"></Button>
+				<TextBlock 
+					IsVisible="False"
+					Text="Неверный логин или пароль"
+					x:Name="ErrorBox"></TextBlock>
+			</StackPanel>
+		</StackPanel>
+	</DockPanel>
 </Window>

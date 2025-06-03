@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Demokrasota")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+59137c8690ee42bb4780a78e24f47ae734cb88d1")]
 [assembly: System.Reflection.AssemblyProductAttribute("Demokrasota")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Demokrasota")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
