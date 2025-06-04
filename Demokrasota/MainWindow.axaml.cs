@@ -2,6 +2,7 @@ using System.Linq;
 using Avalonia.Controls;
 using Demokrasota.Models;
 
+
 namespace Demokrasota
 {
     public partial class MainWindow : Window
@@ -12,6 +13,9 @@ namespace Demokrasota
         {
             InitializeComponent();
             using var context = new User20Context();
+
+            
+
         }
 
         private void Button_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)

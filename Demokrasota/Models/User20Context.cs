@@ -15,6 +15,8 @@ public partial class User20Context : DbContext
     {
     }
 
+    public virtual DbSet<Client> Clients { get; set; }
+
     public virtual DbSet<Employee> Employees { get; set; }
 
     public virtual DbSet<IndividualClient> IndividualClients { get; set; }
@@ -33,6 +35,41 @@ public partial class User20Context : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<Client>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("clients_pk");
+
+            entity.ToTable("clients", "public2");
+
+            entity.HasIndex(e => e.ClientCode, "unique_client_code").IsUnique();
+
+            entity.Property(e => e.Id)
+                .ValueGeneratedNever()
+                .HasColumnName("id");
+            entity.Property(e => e.ClientCode)
+                .HasColumnType("character varying")
+                .HasColumnName("client_code");
+            entity.Property(e => e.ClientCodeIndivid)
+                .HasColumnType("character varying")
+                .HasColumnName("client_code_individ");
+            entity.Property(e => e.ClientCodeLegal)
+                .HasColumnType("character varying")
+                .HasColumnName("client_code_legal");
+            entity.Property(e => e.Type)
+                .HasColumnType("character varying")
+                .HasColumnName("type");
+
+            entity.HasOne(d => d.ClientCodeIndiv).WithMany(p => p.Clients)
+                .HasForeignKey(d => d.ClientCodeIndivid)
+                .OnDelete(DeleteBehavior.SetNull)
+                .HasConstraintName("fk_individual_clients_client_code");
+
+            entity.HasOne(d => d.ClientCodeLegalNavigation).WithMany(p => p.Clients)
+                .HasForeignKey(d => d.ClientCodeLegal)
+                .OnDelete(DeleteBehavior.SetNull)
+                .HasConstraintName("fk_legal_clients_client_code");
+        });
+
         modelBuilder.Entity<Employee>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("employees_pkey");
@@ -168,6 +205,12 @@ public partial class User20Context : DbContext
             entity.Property(e => e.Status)
                 .HasMaxLength(50)
                 .HasColumnName("status");
+
+            entity.HasOne(d => d.ClientCodeNavigation).WithMany(p => p.Orders)
+                .HasPrincipalKey(p => p.ClientCode)
+                .HasForeignKey(d => d.ClientCode)
+                .OnDelete(DeleteBehavior.SetNull)
+                .HasConstraintName("fk_order_clients_client_code");
         });
 
         modelBuilder.Entity<Position>(entity =>

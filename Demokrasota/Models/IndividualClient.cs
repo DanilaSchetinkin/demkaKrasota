@@ -18,4 +18,6 @@ public partial class IndividualClient
     public string Email { get; set; } = null!;
 
     public string Password { get; set; } = null!;
+
+    public virtual ICollection<Client> Clients { get; set; } = new List<Client>();
 }

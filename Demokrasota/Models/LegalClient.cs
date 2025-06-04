@@ -26,4 +26,6 @@ public partial class LegalClient
     public string Password { get; set; } = null!;
 
     public string ClientCode { get; set; } = null!;
+
+    public virtual ICollection<Client> Clients { get; set; } = new List<Client>();
 }

@@ -15,7 +15,7 @@
 				<TextBox x:Name="Log" Width="200" Margin="5"></TextBox>
 				<TextBlock Text="Пароль" Margin="5"></TextBlock>
 				<TextBox x:Name="Pass" Width="200" Margin="5"></TextBox>
-				<Button x:Name="BtnLog" Content="Войти" Margin="5" Click="Button_Click"></Button>
+				<Button  Content="Войти" Click="Button_Click"></Button>
 				<TextBlock 
 					IsVisible="False"
 					Text="Неверный логин или пароль"

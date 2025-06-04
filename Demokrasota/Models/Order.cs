@@ -22,4 +22,6 @@ public partial class Order
     public int EmployeeId { get; set; }
 
     public string ExecutionTime { get; set; } = null!;
+
+    public virtual Client ClientCodeNavigation { get; set; } = null!;
 }

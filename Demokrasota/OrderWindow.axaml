@@ -6,17 +6,16 @@
         x:Class="Demokrasota.OrderWindow"
         Title="OrderWindow">
 	<DockPanel>
-		<StackPanel 
-			DockPanel.Dock="Top"
-			Margin="25"
-			VerticalAlignment="Top"
-			Height="70"
-			Width=""
-			Orientation="Horizontal">
-			<TextBox
-				x:Name="SearchBox"
-				Height="30"
-				Width="200"></TextBox>
+		<StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+			<StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+				<ComboBox x:Name="ComboBoxClients" Width="300" Margin="5"/>
+				<Button Content="Add" Click="Add_Client" Margin="5"/>
+			</StackPanel>
+			<TextBlock x:Name="ErrorClientsTextBlock" Text="Выберите клиента" Foreground="Red" IsVisible="False" HorizontalAlignment="Center"></TextBlock>
+			<ListBox x:Name="ListBoxService" SelectionMode="Multiple" Height="150"></ListBox>
+			<TextBlock x:Name="ErrorServicesTextBlock" Text="Выберите сервисы" Foreground="Red" IsVisible="False" HorizontalAlignment="Center"></TextBlock>
+			<Button Margin="5" Content="Сформировать" Click="Button_Click_1"></Button>
+			<TextBlock x:Name="ErrorAddTextBlock" Text="Добавлено" Foreground="Green" IsVisible="False" HorizontalAlignment="Center"></TextBlock>
 		</StackPanel>
 	</DockPanel>
 </Window>
