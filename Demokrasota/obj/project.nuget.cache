@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "XtnYM7KmN/4=",
+  "dgSpecHash": "c/TEfZnC9wg=",
   "success": true,
-  "projectFilePath": "D:\\Demokrasota\\Demokrasota\\Demokrasota.csproj",
+  "projectFilePath": "D:\\Users\\АЛЕКСАНДР\\Source\\Repos\\demkaKrasota\\Demokrasota\\Demokrasota.csproj",
   "expectedPackageFiles": [
     "D:\\Users\\АЛЕКСАНДР\\.nuget\\packages\\avalonia\\11.2.1\\avalonia.11.2.1.nupkg.sha512",
     "D:\\Users\\АЛЕКСАНДР\\.nuget\\packages\\avalonia.angle.windows.natives\\2.1.22045.20230930\\avalonia.angle.windows.natives.2.1.22045.20230930.nupkg.sha512",

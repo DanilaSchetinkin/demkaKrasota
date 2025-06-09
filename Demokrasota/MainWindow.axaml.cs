@@ -31,7 +31,7 @@ namespace Demokrasota
                 if (employee != null)
                 {
 
-                    var orderWindow = new OrderWindow();
+                    var orderWindow = new OrderWindow(employee.Id);
                     orderWindow.Show();
                     this.Close();
                 }

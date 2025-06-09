@@ -1,0 +1,36 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="Demokrasota.AddClientWindow"
+        Title="Добавление клиента" Width="400" Height="600">
+	<StackPanel Margin="10">
+		<TextBlock Text="Тип клиента:" Margin="5"/>
+		<ComboBox x:Name="ClientTypeComboBox" SelectedIndex="0" Margin="5">
+			<ComboBoxItem Content="ЮЛ"/>
+			<ComboBoxItem Content="ФЛ"/>
+		</ComboBox>
+
+		<!-- ЮЛ поля -->
+		<StackPanel x:Name="LegalFieldsPanel">
+			<TextBox x:Name="CompanyNameBox" PlaceholderText="Название компании" Margin="5"/>
+			<TextBox x:Name="AddressBox" PlaceholderText="Адрес" Margin="5"/>
+			<TextBox x:Name="INNBox" PlaceholderText="ИНН" Margin="5"/>
+			<TextBox x:Name="RSBox" PlaceholderText="Расчетный счет" Margin="5"/>
+			<TextBox x:Name="BIKBox" PlaceholderText="БИК" Margin="5"/>
+			<TextBox x:Name="DirectorBox" PlaceholderText="ФИО руководителя" Margin="5"/>
+			<TextBox x:Name="ContactBox" PlaceholderText="ФИО контактного лица" Margin="5"/>
+			<TextBox x:Name="PhoneBox" PlaceholderText="Телефон" Margin="5"/>
+			<TextBox x:Name="EmailBox" PlaceholderText="Email" Margin="5"/>
+		</StackPanel>
+
+		<!-- ФЛ поля -->
+		<StackPanel x:Name="IndividualFieldsPanel" IsVisible="False">
+			<TextBox x:Name="FLFIOBox" PlaceholderText="ФИО" Margin="5"/>
+			<TextBox x:Name="BirthBox" PlaceholderText="Дата рождения" Margin="5"/>
+			<TextBox x:Name="PassportBox" PlaceholderText="Паспорт (серия номер)" Margin="5"/>
+			<TextBox x:Name="PhoneFLBox" PlaceholderText="Телефон" Margin="5"/>
+			<TextBox x:Name="EmailFLBox" PlaceholderText="Email" Margin="5"/>
+		</StackPanel>
+
+		<Button Content="Сохранить" Click="Save_Click" Margin="10"/>
+	</StackPanel>
+</Window>

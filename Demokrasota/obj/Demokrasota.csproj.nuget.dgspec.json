@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Demokrasota\\Demokrasota\\Demokrasota.csproj": {}
+    "D:\\Users\\АЛЕКСАНДР\\Source\\Repos\\demkaKrasota\\Demokrasota\\Demokrasota.csproj": {}
   },
   "projects": {
-    "D:\\Demokrasota\\Demokrasota\\Demokrasota.csproj": {
+    "D:\\Users\\АЛЕКСАНДР\\Source\\Repos\\demkaKrasota\\Demokrasota\\Demokrasota.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Demokrasota\\Demokrasota\\Demokrasota.csproj",
+        "projectUniqueName": "D:\\Users\\АЛЕКСАНДР\\Source\\Repos\\demkaKrasota\\Demokrasota\\Demokrasota.csproj",
         "projectName": "Demokrasota",
-        "projectPath": "D:\\Demokrasota\\Demokrasota\\Demokrasota.csproj",
+        "projectPath": "D:\\Users\\АЛЕКСАНДР\\Source\\Repos\\demkaKrasota\\Demokrasota\\Demokrasota.csproj",
         "packagesPath": "D:\\Users\\АЛЕКСАНДР\\.nuget\\packages\\",
-        "outputPath": "D:\\Demokrasota\\Demokrasota\\obj\\",
+        "outputPath": "D:\\Users\\АЛЕКСАНДР\\Source\\Repos\\demkaKrasota\\Demokrasota\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

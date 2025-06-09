@@ -295,3 +295,11 @@ D:\Demokrasota\Demokrasota\obj\Debug\net8.0\refint\Avalonia\Demokrasota.dll
 D:\Demokrasota\Demokrasota\obj\Debug\net8.0\Demokras.F0F83948.Up2Date
 D:\Demokrasota\Demokrasota\obj\Debug\net8.0\Demokrasota.genruntimeconfig.cache
 D:\Demokrasota\Demokrasota\obj\Debug\net8.0\ref\Demokrasota.dll
+D:\Users\АЛЕКСАНДР\Source\Repos\demkaKrasota\Demokrasota\obj\Debug\net8.0\Demokrasota.csproj.AssemblyReference.cache
+D:\Users\АЛЕКСАНДР\Source\Repos\demkaKrasota\Demokrasota\obj\Debug\net8.0\Avalonia\Resources.Inputs.cache
+D:\Users\АЛЕКСАНДР\Source\Repos\demkaKrasota\Demokrasota\obj\Debug\net8.0\Avalonia\resources
+D:\Users\АЛЕКСАНДР\Source\Repos\demkaKrasota\Demokrasota\obj\Debug\net8.0\Demokrasota.GeneratedMSBuildEditorConfig.editorconfig
+D:\Users\АЛЕКСАНДР\Source\Repos\demkaKrasota\Demokrasota\obj\Debug\net8.0\Demokrasota.AssemblyInfoInputs.cache
+D:\Users\АЛЕКСАНДР\Source\Repos\demkaKrasota\Demokrasota\obj\Debug\net8.0\Demokrasota.AssemblyInfo.cs
+D:\Users\АЛЕКСАНДР\Source\Repos\demkaKrasota\Demokrasota\obj\Debug\net8.0\Demokrasota.csproj.CoreCompileInputs.cache
+D:\Users\АЛЕКСАНДР\Source\Repos\demkaKrasota\Demokrasota\obj\Debug\net8.0\Demokrasota.sourcelink.json
