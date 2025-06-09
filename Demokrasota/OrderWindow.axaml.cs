@@ -16,6 +16,11 @@ namespace Demokrasota
         private List<ServiceViewModel> services;
         private int currentEmployeeId;
 
+
+        public OrderWindow() : this(0)
+        {
+        }
+
         public OrderWindow(int employeeId)
         {
             InitializeComponent();
@@ -24,7 +29,7 @@ namespace Demokrasota
             SetupEventHandlers();
         }
 
-        private void LoadData()
+        public void LoadData()
         {
             using var context = new User20Context();
 
@@ -66,24 +71,24 @@ namespace Demokrasota
             SetNextOrderNumber();
         }
 
-        private void SetupEventHandlers()
+        public void SetupEventHandlers()
         {
             VesselCodeTextBox.GotFocus += (s, e) => ShowNextOrderHint();
             ClientTypeComboBox.SelectionChanged += (s, e) => FilterClientsByType();
         }
 
-        private void ShowNextOrderHint()
+        public void ShowNextOrderHint()
         {
             VesselCodeHint.Text = $"Рекомендуемый номер: {GenerateNextOrderNumber()}";
         }
 
-        private void FilterClientsByType()
+        public void FilterClientsByType()
         {
             string clientType = ClientTypeComboBox.SelectedIndex == 0 ? "ФЛ" : "ЮЛ";
             ComboBoxClients.ItemsSource = clients.Where(c => c.Type == clientType).ToList();
         }
 
-        private void VesselCodeTextBox_KeyDown(object sender, KeyEventArgs e)
+        public void VesselCodeTextBox_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter)
             {
@@ -92,7 +97,7 @@ namespace Demokrasota
             }
         }
 
-        private void ValidateVesselCode()
+        public void ValidateVesselCode()
         {
             string enteredCode = VesselCodeTextBox.Text;
 
@@ -110,7 +115,7 @@ namespace Demokrasota
             }
         }
 
-        private void Add_Client(object sender, RoutedEventArgs e)
+        public void Add_Client(object sender, RoutedEventArgs e)
         {
             var addClientWindow = new AddClientWindow();
             addClientWindow.Closed += (s, args) =>
@@ -120,7 +125,7 @@ namespace Demokrasota
             addClientWindow.ShowDialog(this);
         }
 
-        private void CreateOrder_Click(object sender, RoutedEventArgs e)
+        public void CreateOrder_Click(object sender, RoutedEventArgs e)
         {
             if (!ValidateForm())
                 return;
@@ -137,7 +142,7 @@ namespace Demokrasota
             }
         }
 
-        private bool ValidateForm()
+        public bool ValidateForm()
         {
             bool isValid = true;
 
@@ -174,47 +179,69 @@ namespace Demokrasota
             return isValid;
         }
 
-        private void CreateNewOrder()
+        public void CreateNewOrder()
         {
-            using var context = new User20Context();
-
-            var selectedClient = (ClientViewModel)ComboBoxClients.SelectedItem;
-            var selectedServices = services.Where(s => s.IsSelected).ToList();
-
-            var newOrder = new Order
+            try
             {
-                OrderNumber = VesselCodeTextBox.Text,
-                CreationDate = DateOnly.FromDateTime(DateTime.Now),
-                ClientCode = selectedClient.CodeClient,
-                Services = string.Join(", ", selectedServices.Select(s => s.ServiceId)),
-                Status = "Новая",
-                EmployeeId = currentEmployeeId,
-                ExecutionTime = CalculateExecutionTime(selectedServices)
-            };
+                if (ComboBoxClients.SelectedItem == null)
+                {
+                    ShowStatus("Выберите клиента!", Brushes.Red);
+                    return;
+                }
 
-            context.Orders.Add(newOrder);
-            context.SaveChanges();
+                var selectedServices = services.Where(s => s.IsSelected).ToList();
+                if (!selectedServices.Any())
+                {
+                    ShowStatus("Выберите хотя бы одну услугу!", Brushes.Red);
+                    return;
+                }
+
+                using var context = new User20Context();
+                var client = (ClientViewModel)ComboBoxClients.SelectedItem;
+
+                var newOrder = new Order
+                {
+                    OrderNumber = VesselCodeTextBox.Text,
+                    CreationDate = DateOnly.FromDateTime(DateTime.Now),
+                    ClientCode = client.CodeClient,
+                    Services = string.Join(",", selectedServices.Select(s => s.ServiceId)),
+                    Status = "Новая",
+                    EmployeeId = currentEmployeeId,
+                    ExecutionTime = "8 ч" // Временное значение
+                };
+
+                context.Orders.Add(newOrder);
+                int result = context.SaveChanges();
+
+                if (result > 0)
+                {
+                    ShowStatus("Заказ успешно создан!", Brushes.Green);
+                    ResetForm();
+                }
+            }
+            catch (Exception ex)
+            {
+                ShowStatus($"Ошибка: {ex.Message}", Brushes.Red);
+            }
         }
 
-        private string CalculateExecutionTime(List<ServiceViewModel> selectedServices)
+        public string CalculateExecutionTime(List<ServiceViewModel> selectedServices)
         {
-            // Здесь можно реализовать логику расчета времени выполнения
-            // на основе выбранных услуг
+            
             return "8 ч"; // Временная заглушка
         }
 
-        private void SetNextOrderNumber()
+        public void SetNextOrderNumber()
         {
             VesselCodeTextBox.Text = GenerateNextOrderNumber();
         }
 
-        private string GenerateNextOrderNumber()
+        public string GenerateNextOrderNumber()
         {
             using var context = new User20Context();
 
-            // Получаем последний номер заказа (исключая архивные)
+            // Получаем последний номер заказа
             var lastOrder = context.Orders
-                .Where(o => o.Status != "Архив")
                 .OrderByDescending(o => o.Id)
                 .FirstOrDefault();
 
@@ -224,14 +251,14 @@ namespace Demokrasota
             return $"{lastNumber + 1}/{DateTime.Now:dd.MM.yyyy}";
         }
 
-        private void ShowStatus(string message, IBrush color)
+        public void ShowStatus(string message, IBrush color)
         {
             StatusTextBlock.Text = message;
             StatusTextBlock.Foreground = color;
             StatusTextBlock.IsVisible = true;
         }
 
-        private void ResetForm()
+        public void ResetForm()
         {
             VesselCodeTextBox.Text = GenerateNextOrderNumber();
             ComboBoxClients.SelectedIndex = -1;

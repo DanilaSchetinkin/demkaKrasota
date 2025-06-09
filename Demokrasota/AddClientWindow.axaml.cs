@@ -29,12 +29,6 @@ namespace Demokrasota
             {
                 string clientCode = GenerateClientCode(ClientTypeComboBox.SelectedIndex == 0 ? "ЮЛ" : "ФЛ");
 
-                var client = new Client
-                {
-                    ClientCode = clientCode,
-                    Type = ClientTypeComboBox.SelectedIndex == 0 ? "ЮЛ" : "ФЛ"
-                };
-
                 if (ClientTypeComboBox.SelectedIndex == 0) // Юридическое лицо
                 {
                     var legalClient = new LegalClient
@@ -49,10 +43,17 @@ namespace Demokrasota
                         ContactPerson = ContactBox.Text,
                         ContactPhone = PhoneBox.Text,
                         Email = EmailBox.Text,
-                        Password = "default123" // Генерация пароля
+                        Password = "default123"
                     };
                     context.LegalClients.Add(legalClient);
-                    client.ClientCodeLegalNavigation = legalClient;
+
+                    var client = new Client
+                    {
+                        ClientCode = clientCode,
+                        Type = "ЮЛ",
+                        ClientCodeLegal = clientCode // Устанавливаем ClientCodeLegal
+                    };
+                    context.Clients.Add(client);
                 }
                 else // Физическое лицо
                 {
@@ -62,22 +63,34 @@ namespace Demokrasota
                         FullName = FLFIOBox.Text,
                         PassportData = PassportBox.Text,
                         BirthDate = DateOnly.FromDateTime(DateTime.Parse(BirthBox.Text)),
-                        Address = AddressFLBox.Text,
+                        Address = AddresFlBox.Text,
                         Email = EmailFLBox.Text,
-                        Password = "default123" // Генерация пароля
+                        Password = "default123"
                     };
                     context.IndividualClients.Add(individualClient);
-                    client.ClientCodeIndiv = individualClient;
+
+                    var client = new Client
+                    {
+                        ClientCode = clientCode,
+                        Type = "ФЛ",
+                        ClientCodeIndivid = clientCode // Устанавливаем ClientCodeIndivid
+                    };
+                    context.Clients.Add(client);
                 }
 
-                context.Clients.Add(client);
                 context.SaveChanges();
                 this.Close();
             }
             catch (Exception ex)
             {
-                // Реализовать вывод ошибки пользователю
-                Console.WriteLine($"Ошибка: {ex.Message}");
+                var errorWindow = new Window
+                {
+                    Title = "Ошибка",
+                    Content = new TextBlock { Text = $"Ошибка при сохранении: {ex.Message}" },
+                    Width = 300,
+                    Height = 150
+                };
+                errorWindow.ShowDialog(this);
             }
         }
 
