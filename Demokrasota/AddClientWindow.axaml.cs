@@ -65,6 +65,10 @@ namespace Demokrasota
                     BankAccount = RSBox.Text,
                     DirectorName = DirectorBox.Text,
                     ContactPerson = ContactBox.Text,
+                    ContactPhone = PhoneBox.Text,
+                    Email = EmailBox.Text,
+                    ClientCode = ClientCodeBox.Text
+
 
                     };
                     context.LegalClients.Add(legalClient);
@@ -82,7 +86,27 @@ namespace Demokrasota
                 }
                 else // Физ. лицо
                 {
-                    var individualClient = new IndividualClient { /* ... */ };
+
+                    if(string.IsNullOrWhiteSpace(FLFIOBox.Text)||
+                        string.IsNullOrWhiteSpace(BirthBox.Text)||
+                        string.IsNullOrWhiteSpace(AddresFlBox.Text)||
+                        string.IsNullOrWhiteSpace(PassportBox.Text)||
+                        string.IsNullOrWhiteSpace(EmailFLBox.Text)||
+                        string.IsNullOrWhiteSpace(ClientCodeFLBox.Text)
+                        )
+                    {
+                        return;
+                    }
+
+                    var individualClient = new IndividualClient {
+                    FullName = FLFIOBox.Text,
+                    BirthDate = DateOnly.Parse(BirthBox.Text),
+                    Address = AddresFlBox.Text,
+                    Password = PassportBox.Text,
+                    Email = EmailFLBox.Text,
+                    ClientCode = ClientCodeFLBox.Text
+                    
+                    };
                     context.IndividualClients.Add(individualClient);
 
                     // Сначала сохраняем IndividualClient
