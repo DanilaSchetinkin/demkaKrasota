@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.Interactivity;
@@ -40,13 +41,13 @@ namespace Demokrasota
             clients = individualClients
                 .Select(c => new ClientViewModel
                 {
-                    Type = "ФЛ",
+                    Type = "individual",
                     CodeClient = c.ClientCode,
                     NameClient = c.FullName
                 })
                 .Concat(legalClients.Select(c => new ClientViewModel
                 {
-                    Type = "ЮЛ",
+                    Type = "legal",
                     CodeClient = c.ClientCode,
                     NameClient = c.CompanyName
                 }))
@@ -198,9 +199,11 @@ namespace Demokrasota
 
                 using var context = new User20Context();
                 var client = (ClientViewModel)ComboBoxClients.SelectedItem;
-
+                var lastId = context.Orders.OrderByDescending(o=>o.Id).FirstOrDefault();
+                int chelickId = lastId.Id + 1;
                 var newOrder = new Order
                 {
+                    Id = chelickId,
                     OrderNumber = VesselCodeTextBox.Text,
                     CreationDate = DateOnly.FromDateTime(DateTime.Now),
                     ClientCode = client.CodeClient,
@@ -210,14 +213,12 @@ namespace Demokrasota
                     ExecutionTime = "8 ч" // Временное значение
                 };
 
-                context.Orders.Add(newOrder);
-                int result = context.SaveChanges();
 
-                if (result > 0)
-                {
-                    ShowStatus("Заказ успешно создан!", Brushes.Green);
-                    ResetForm();
-                }
+                context.Orders.Add(newOrder);
+                context.SaveChanges();
+
+                ShowStatus("Заказ успешно создан!", Brushes.Green);
+                ResetForm();
             }
             catch (Exception ex)
             {

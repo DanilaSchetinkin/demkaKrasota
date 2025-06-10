@@ -21,6 +21,7 @@
 			<TextBox x:Name="ContactBox" Watermark="ФИО контактного лица" Margin="5"/>
 			<TextBox x:Name="PhoneBox" Watermark="Телефон" Margin="5"/>
 			<TextBox x:Name="EmailBox" Watermark="Email" Margin="5"/>
+			<TextBox x:Name="ClientCodeBox" Watermark="Email" Margin="5"/>
 		</StackPanel>
 
 		<!-- ФЛ поля -->

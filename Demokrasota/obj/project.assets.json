@@ -3484,23 +3484,23 @@
     ]
   },
   "packageFolders": {
-    "D:\\Users\\АЛЕКСАНДР\\.nuget\\packages\\": {},
+    "C:\\Users\\chvt\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Users\\АЛЕКСАНДР\\Source\\Repos\\demkaKrasota\\Demokrasota\\Demokrasota.csproj",
+      "projectUniqueName": "C:\\Users\\chvt\\Source\\Repos\\demkaKrasota\\Demokrasota\\Demokrasota.csproj",
       "projectName": "Demokrasota",
-      "projectPath": "D:\\Users\\АЛЕКСАНДР\\Source\\Repos\\demkaKrasota\\Demokrasota\\Demokrasota.csproj",
-      "packagesPath": "D:\\Users\\АЛЕКСАНДР\\.nuget\\packages\\",
-      "outputPath": "D:\\Users\\АЛЕКСАНДР\\Source\\Repos\\demkaKrasota\\Demokrasota\\obj\\",
+      "projectPath": "C:\\Users\\chvt\\Source\\Repos\\demkaKrasota\\Demokrasota\\Demokrasota.csproj",
+      "packagesPath": "C:\\Users\\chvt\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\chvt\\Source\\Repos\\demkaKrasota\\Demokrasota\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "D:\\Users\\АЛЕКСАНДР\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\chvt\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -3585,7 +3585,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.201/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
