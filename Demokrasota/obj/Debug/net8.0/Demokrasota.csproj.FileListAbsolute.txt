@@ -593,6 +593,3 @@ C:\Users\chvt\Source\Repos\demkaKrasota\Demokrasota\obj\Debug\net8.0\refint\Aval
 C:\Users\chvt\Source\Repos\demkaKrasota\Demokrasota\obj\Debug\net8.0\Demokras.F0F83948.Up2Date
 C:\Users\chvt\Source\Repos\demkaKrasota\Demokrasota\obj\Debug\net8.0\Demokrasota.genruntimeconfig.cache
 C:\Users\chvt\Source\Repos\demkaKrasota\Demokrasota\obj\Debug\net8.0\ref\Demokrasota.dll
-C:\Users\chvt\Source\Repos\demkaKrasota\Demokrasota\obj\Debug\net8.0\Demokrasota.dll
-C:\Users\chvt\Source\Repos\demkaKrasota\Demokrasota\obj\Debug\net8.0\refint\Demokrasota.dll
-C:\Users\chvt\Source\Repos\demkaKrasota\Demokrasota\obj\Debug\net8.0\Demokrasota.pdb

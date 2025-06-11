@@ -69,7 +69,6 @@ namespace Demokrasota
                     Email = EmailBox.Text,
                     ClientCode = ClientCodeBox.Text
 
-
                     };
                     context.LegalClients.Add(legalClient);
 
@@ -83,6 +82,7 @@ namespace Demokrasota
                         ClientCodeLegal = clientCode
                     };
                     context.Clients.Add(client);
+                    context.SaveChanges();
                 }
                 else // ‘из. лицо
                 {
