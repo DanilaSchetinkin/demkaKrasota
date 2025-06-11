@@ -26,25 +26,23 @@ namespace Demokrasota
             using var context = new User20Context();
             using var transaction = context.Database.BeginTransaction(System.Data.IsolationLevel.Serializable);
 
-            try
-            {
-                string clientCode = GenerateClientCode(ClientTypeComboBox.SelectedIndex == 0 ? "ЮЛ" : "ФЛ");
+           
 
                 // Проверка на дубликат
-                if (context.Clients.Any(c => c.ClientCode == clientCode))
+                /*if (context.Clients.Any(c => c.ClientCode == clientCode))
                     throw new Exception($"Клиент с кодом {clientCode} уже существует!");
-
+*/
                 if (ClientTypeComboBox.SelectedIndex == 0) // Юр. лицо
                 {
-                    if(string.IsNullOrWhiteSpace(CompanyNameBox.Text)||
-                        string.IsNullOrWhiteSpace(AddressBox.Text)||
-                        string.IsNullOrWhiteSpace(INNBox.Text)||
-                        string.IsNullOrWhiteSpace(RSBox.Text)||
-                        string.IsNullOrWhiteSpace(BIKBox.Text)||
-                        string.IsNullOrWhiteSpace(DirectorBox.Text)||
-                        string.IsNullOrWhiteSpace(ContactBox.Text)||
-                        string.IsNullOrWhiteSpace(PhoneBox.Text)||
-                        string.IsNullOrWhiteSpace(EmailBox.Text)||
+                    if (string.IsNullOrWhiteSpace(CompanyNameBox.Text) ||
+                        string.IsNullOrWhiteSpace(AddressBox.Text) ||
+                        string.IsNullOrWhiteSpace(INNBox.Text) ||
+                        string.IsNullOrWhiteSpace(RSBox.Text) ||
+                        string.IsNullOrWhiteSpace(BIKBox.Text) ||
+                        string.IsNullOrWhiteSpace(DirectorBox.Text) ||
+                        string.IsNullOrWhiteSpace(ContactBox.Text) ||
+                        string.IsNullOrWhiteSpace(PhoneBox.Text) ||
+                        string.IsNullOrWhiteSpace(EmailBox.Text) ||
                         string.IsNullOrWhiteSpace(ClientCodeBox.Text)
                         )
                     {
@@ -52,22 +50,25 @@ namespace Demokrasota
 
 
 
-                                    return;
+                        return;
                     }
-                    
-                    
-                   
 
-                    var legalClient = new LegalClient {
-                    CompanyName = CompanyNameBox.Text,
-                    Address = AddressBox.Text,  
-                    Inn = INNBox.Text,
-                    BankAccount = RSBox.Text,
-                    DirectorName = DirectorBox.Text,
-                    ContactPerson = ContactBox.Text,
-                    ContactPhone = PhoneBox.Text,
-                    Email = EmailBox.Text,
-                    ClientCode = ClientCodeBox.Text
+
+
+
+                    var legalClient = new LegalClient
+                    {
+                        CompanyName = CompanyNameBox.Text,
+                        Address = AddressBox.Text,
+                        Inn = INNBox.Text,
+                        BankAccount = RSBox.Text,
+                        Bik = BIKBox.Text,
+                        DirectorName = DirectorBox.Text,
+                        ContactPerson = ContactBox.Text,
+                        ContactPhone = PhoneBox.Text,
+                        Email = EmailBox.Text,
+                        Password = PasswordBox.Text,
+                        ClientCode = ClientCodeBox.Text
 
                     };
                     context.LegalClients.Add(legalClient);
@@ -77,9 +78,9 @@ namespace Demokrasota
 
                     var client = new Client
                     {
-                        ClientCode = clientCode,
-                        Type = "ЮЛ",
-                        ClientCodeLegal = clientCode
+                        ClientCode = ClientCodeBox.Text,
+                        Type = "legal",
+                        ClientCodeLegal = ClientCodeBox.Text
                     };
                     context.Clients.Add(client);
                     context.SaveChanges();
@@ -87,25 +88,27 @@ namespace Demokrasota
                 else // Физ. лицо
                 {
 
-                    if(string.IsNullOrWhiteSpace(FLFIOBox.Text)||
-                        string.IsNullOrWhiteSpace(BirthBox.Text)||
-                        string.IsNullOrWhiteSpace(AddresFlBox.Text)||
-                        string.IsNullOrWhiteSpace(PassportBox.Text)||
-                        string.IsNullOrWhiteSpace(EmailFLBox.Text)||
+                    if (string.IsNullOrWhiteSpace(FLFIOBox.Text) ||
+                        string.IsNullOrWhiteSpace(BirthBox.Text) ||
+                        string.IsNullOrWhiteSpace(AddresFlBox.Text) ||
+                        string.IsNullOrWhiteSpace(PassportBox.Text) ||
+                        string.IsNullOrWhiteSpace(EmailFLBox.Text) ||
                         string.IsNullOrWhiteSpace(ClientCodeFLBox.Text)
                         )
                     {
                         return;
                     }
 
-                    var individualClient = new IndividualClient {
-                    FullName = FLFIOBox.Text,
-                    BirthDate = DateOnly.Parse(BirthBox.Text),
-                    Address = AddresFlBox.Text,
-                    Password = PassportBox.Text,
-                    Email = EmailFLBox.Text,
-                    ClientCode = ClientCodeFLBox.Text
-                    
+                    var individualClient = new IndividualClient
+                    {
+                        FullName = FLFIOBox.Text,
+                        BirthDate = DateOnly.Parse(BirthBox.Text),
+                        Address = AddresFlBox.Text,
+                        PassportData = PassportBox.Text,
+                        Email = EmailFLBox.Text,
+                        Password = PasswordFLBox.Text,
+                        ClientCode = ClientCodeFLBox.Text
+
                     };
                     context.IndividualClients.Add(individualClient);
 
@@ -114,9 +117,9 @@ namespace Demokrasota
 
                     var client = new Client
                     {
-                        ClientCode = clientCode,
-                        Type = "ФЛ",
-                        ClientCodeIndivid = clientCode
+                        ClientCode = ClientCodeFLBox.Text,
+                        Type = "individual",
+                        ClientCodeIndivid = ClientCodeFLBox.Text
                     };
                     context.Clients.Add(client);
                 }
@@ -125,6 +128,8 @@ namespace Demokrasota
                 transaction.Commit();
                 this.Close();
             }
+            
+            /*}
             catch (DbUpdateException dbEx)
             {
                 transaction.Rollback();
@@ -134,10 +139,10 @@ namespace Demokrasota
             {
                 transaction.Rollback();
                 ShowError($"Ошибка: {ex.Message}");
-            }
-        }
+            }*/
+        
 
-        private void ShowError(string message)
+       /* private void ShowError(string message)
         {
             var errorWindow = new Window
             {
@@ -163,6 +168,6 @@ namespace Demokrasota
             return lastCode == null
                 ? $"{prefix}1"
                 : $"{prefix}{int.Parse(lastCode[prefix.Length..]) + 1}";
-        }
+        }*/
     }
 }

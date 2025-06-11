@@ -21,6 +21,7 @@
 			<TextBox x:Name="ContactBox" Watermark="ФИО контактного лица" Margin="5"/>
 			<TextBox x:Name="PhoneBox" Watermark="Телефон" Margin="5"/>
 			<TextBox x:Name="EmailBox" Watermark="Email" Margin="5"/>
+			<TextBox x:Name="PasswordBox" Watermark="Password" Margin="5"/>
 			<TextBox x:Name="ClientCodeBox" Watermark="ClientCode" Margin="5"/>
 		</StackPanel>
 
@@ -31,6 +32,7 @@
 			<TextBox x:Name="AddresFlBox" Watermark="Адресс" Margin="5"></TextBox>
 			<TextBox x:Name="PassportBox" Watermark="Паспорт (серия номер)" Margin="5"/>
 			<TextBox x:Name="EmailFLBox" Watermark="Email" Margin="5"/>
+			<TextBox x:Name="PasswordFLBox" Watermark="Password" Margin="5"/>
 			<TextBox x:Name="ClientCodeFLBox" Watermark="ClientCode" Margin="5"/>		
 		</StackPanel>
 
